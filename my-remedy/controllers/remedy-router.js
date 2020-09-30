@@ -17,7 +17,10 @@ router.get('/', (req, res) => {
 
 ////GUIDE ROUTE, shows the posts of recipes/advice/tips
 router.get("/guide", (req, res)=>{
-    res.render("guide.jsx", {data:Remedy})
+    Remedy.find({}, (error, allRemedies) => {
+        res.render("guide.jsx", { remedy : allRemedies });
+      });
+    
 })
 
  ///////NEW ROUTE 
@@ -35,9 +38,15 @@ router.get("/learn", (req, res)=>{
 // // ////CREATE ROUTE
 router.post("/guide", (req, res)=> {
     Remedy.create(req.body, (error, result) => {
+        
         res.redirect("/guide");
       });
 })
+
+// router.post("/", (req, res)=> {
+//     pokemon.push(req.body);
+//     res.redirect("/pokemon");
+// })
 
 
 /////EDIT ROUTE 
@@ -50,11 +59,19 @@ router.post("/guide", (req, res)=> {
 
 
 
-////PUT/UPDATE ROUTE
-// router.put("/:index", (req, res) => {
-//     pokemon[req.params.index] = req.body
-//     res.redirect(`/pokemon/`)
-// })
+/// UPDATE
+router.put("/guide/:id", (req, res) => {
+    
+  
+    Remedy.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true },
+      (err, updatedModel) => {
+        res.redirect("/guide");
+      }
+    );
+  });
 
 
 
@@ -70,11 +87,12 @@ router.get("/guide/:id", (req, res) => {
 })
 
 
-//DELETE Route
-// router.delete("/:index", (req, res) => {
-//     pokemon.splice(req.params.index,1)
-//     res.redirect("/pokemon")
-// })
+// DElETE
+router.delete("/guide/:id", (req, res) => {
+    Remedy.findByIdAndRemove(req.params.id, (err, data) => {
+      res.redirect("/guide/");
+    });
+  });
 
 
 //Export Router to be used in Server.js
