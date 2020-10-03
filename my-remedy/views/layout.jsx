@@ -26,7 +26,7 @@ class Layout extends React.Component {
 
 
               
-               <a  href ={"/profile"}><li>profile</li></a>
+               <a  href ={"/auth/profile"}><li>profile</li></a>
               </ul>
             </nav>
           

@@ -1,10 +1,13 @@
 //Get Route from Express
 const { Router } = require("express");
 
-const mongoose = require("mongoose")
-
+// const mongoose = require("../db/dbconn.js")
+const mongojs = require('mongojs')
+const db = mongojs("mongodb+srv://sei:sei2020@sei.rqdkr.azure.mongodb.net/", ["my-remedy"]);
+const mycollection = db.collection('my-remedy')
 const Remedy = require('../models/remedy.js');
 const Login = require("../models/auth/index.js");
+
 
 //create new router for our todos views
 const router = Router();
@@ -77,7 +80,7 @@ router.put("/:index", (req, res) => {
 
 
 
-/// UPDATE guide info
+// /// UPDATE guide info
 router.put("/guide/:id", (req, res) => {
     
   
@@ -92,9 +95,16 @@ router.put("/guide/:id", (req, res) => {
   });
 
 ////PROFILE ROUTE
-router.get("/profile", (req, res)=>{
-  Login.find({}, (error, user) => {
-    res.render("profile.jsx", { login : user });
+// router.get("/auth/profile", (req, res)=>{
+//   Login.find({}, (error, user) => {
+//     res.render("profile.jsx", { login : user });
+//   });
+ 
+// })
+
+router.get("/auth/profile", (req, res)=>{
+  Login.find({}, (error, users) => {
+    res.render("profile.jsx", { login : users });
   });
  
 })
@@ -103,7 +113,15 @@ router.get("/profile", (req, res)=>{
 
 
 
+
 //SHOW ROUTE - shows an individual post of the guide- 
+router.get("/guide/:id", (req, res) => {
+  Remedy.findById(req.params.id, (err, data) => {
+    res.render("show.jsx", {remedy: data});
+  });
+});
+
+
 // router.get("/guide/:id", (req, res) => {
 //     res.render("show.jsx", {
 //         remedy: remedy[req.params.index],
@@ -111,13 +129,30 @@ router.get("/profile", (req, res)=>{
 //     });
 // })
 
-router.get("/guide/:id", (req, res) => {
-  Remedy.find(({_id:req.params.id}), (err, found) => {
-    res.render("show.jsx", { remedy: found });
-  })
-});
+// router.get("/guide/:id", (req, res) => {
+//   Remedy.find(({_id:req.params.id}), (err, found) => {
+//     res.render("show.jsx", { remedy: found });
+//   })
+// });
+
+// router.get("/guide/:id", (req, res) => {
+//   db.mycollection.find({_id:req.params.id}, (error,one) => {
+//       res.render("show.jsx", { remedy: one})})
+//   })
+
+  // router.get("/guide/:id", (req, res) => {
+  //   Remedy.find({}, (error,oneRemedy) => {
+  //       res.render("show.jsx", { remedy: oneRemedy})})
+  //   })
 
 
+// router.get("/guide/:id", (req, res) => {
+//   res.render("show.jsx", {
+//     Remedy.find(({_id:req.params.id}):
+//      Remedy[req.params.id],
+//       id: req.params.id
+//   });
+// })
 
 
 
@@ -136,10 +171,6 @@ router.delete("/guide/:id", (req, res) => {
     // SAVE NEW USER IN DB
     const newUser = await Login.create(req.body);
   
-      // SAVE NAME AND EMAIL IN DB
-  
-  // newUser = await Name.create(req.body);
-  // newUser = await Email.create(req.body);
   
     // Redirect to login page
     res.redirect("/auth/login");
