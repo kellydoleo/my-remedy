@@ -4,6 +4,8 @@
 const { Router } = require("express");
 const bcrypt = require("bcryptjs");
 const User = require("../../models/auth");
+// const Name = require("../../models/auth");
+// const Email = require("../../models/auth");
 
 ///////////////////////////////////////
 // CREATE ROUTER
@@ -25,7 +27,9 @@ router.post("/signup", async (req, res) => {
   req.body.password = await bcrypt.hash(req.body.password, 10);
   // SAVE NEW USER IN DB
   const newUser = await User.create(req.body);
-  // Redirect to login page
+
+ 
+
   res.redirect("/auth/login");
 });
 
@@ -47,7 +51,7 @@ router.post("/login", async (req, res) => {
       //SAVE INFO IN SESSION THAT USER IS LOGGEDIN AND USERNAME
       req.session.login = true;
       req.session.username = user[0].username;
-      res.redirect("/");
+      res.redirect("/guide");
     } else {
       // Redirect to login page if failed
       res.render("auth/fail.jsx");
@@ -57,6 +61,8 @@ router.post("/login", async (req, res) => {
     res.render("auth/fail.jsx");
   }
 });
+
+
 
 //LOGOUT
 router.get("/logout", (req, res) => {

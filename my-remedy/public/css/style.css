@@ -1,15 +1,386 @@
-#logo {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+.logo {
     width: 35%;
 }
 
 #hero-image {
-    max-width: 60%;
+    width: 55%;
+    margin-left: 20%;
+    margin-right: 49%;
+    margin-bottom: 26px;
+    margin-top: 17px;
 }
 
 #green-flower-all {
     max-width: 75%;
+    margin-left: 14%;
 }
 
 .pink-back {
     background-color: #FFC9B4;
+    padding-bottom: 10px;
+
+}
+
+.index {
+    height: 571px;
+}
+
+
+#footer-logo {
+    width:22%;
+    vertical-align: middle;
+}
+
+footer > a > img {
+    display: inline-block;
+}
+
+
+footer > ul {
+    display: inline-block;
+    padding: 0px 37px;
+    margin-left: 125px;
+    vertical-align: middle;
+    margin-top: 63px;
+}
+
+footer > ul > a > li {
+    padding-bottom: 10px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: #F6F3EF;
+    
+}
+
+.about-p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #737373;
+    text-align: center;
+    border: dotted;
+    margin: 31px 379px;
+    position: relative;
+    top: 117px;
+    border-color: #5271FF;
+    border-width: 10px;
+    padding: 9px 8px;
+}
+
+footer {
+    background-color: #72898A;
+    height: 208px;
+}
+
+.layout-nav-list  {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    padding: 12px 44px;
+    font-size: 22px;
+    font-weight: 300;
+
+
+}
+
+.layout-nav-list > a > li {
+    display: inline-block;
+    padding: 12px 65px;
+    color: #737373;
+}
+
+
+
+
+.nav-list-logins {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px 44px;
+    font-size: 22px;
+    font-weight: 300;
+    
+    
+    
+}
+
+
+.nav-list-logins > a {
+    color: #737373;
+}
+
+.login-page-nav {
+    text-align: center;
+    
+}
+
+ul {
+    list-style-type: none;
+    
+}
+
+ul > a {
+    text-decoration: none;
+}
+
+.my-remedy {
+    color: #5271FF;
+}
+
+.dotted {
+    border-top: dotted;
+    border-top-width: 12px;
+    border-top-color: #DED858;
+    margin-bottom: -6px;
+    z-index: 1;
+    position: relative;
+    
+
+}
+
+.body {
+    background-color: #F6F3EF;
+}
+
+#login-header {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    color: #72898A;
+    margin-left: 5%;
+    padding-top: 2%;
+}
+
+.login-page-form {
+    padding: 29px;
+   
+    margin-left: 33%;
+}
+
+/* .password-box {
+    position: relative;
+    top: 47px;
+    background-color: #D5C8C4;
+    border: none;
+    height: 29px;
+    width: 193px;
+    left: -60px;
+} */
+
+#userlogin {
+    background-color: #D5C8C4;
+    border: none;
+
+}
+
+#passwordlogin {
+    background-color: #D5C8C4;
+    border: none;
+}
+
+label {
+    padding-left: 5px;
+    color: #737373;
+    font-family: "Open Sans", sans-serif;
+    margin-right: 8px;
+}
+
+
+
+  
+  
+.nav-list-logins > a:hover {
+    text-decoration: none;
+  }
+  
+  ul > a:hover {
+    text-decoration: none;
+}
+
+  
+.button {
+    background-color: #DED858;
+    width: 154px;
+    height: 53px;
+    border-radius: 42px;
+    color: #FEFEFE;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    border: none;
+}
+
+.or-signup {
+    position: relative;
+    left: 678px;
+    top: -69px;
+    font-family: "Open Sans", sans-serif;
+    color: #737373;
+
+}
+
+.underline-signup {
+    text-decoration: underline;
+    color: #737373;
+}
+
+.underline-signup:hover {
+    text-decoration: none;
+}
+
+#register-header {
+    color: #72898A;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+.form {
+    margin-left: 37%;
+}
+
+#fullname, #username, #password, #email, .form-bar {
+    background-color: #D5C8C4;
+    border: none;
+}
+
+.or-login {
+    position: relative;
+    left: 704px;
+    top: -38px;
+    font-family: "Open Sans", sans-serif;
+    color: #737373;
+}
+
+
+#guide-header {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    color: #72898A;
+    margin-left: 5%;
+    padding-top: 2%;
+    display: inline-block;
+
+}
+
+#guide-p {
+    display: inline-block;
+    margin: 0 20%;
+    font-family: "Open Sans",sans-serif;
+    color: #737373;
+}
+
+.add {
+    color: #72898A;
+    display: inline-block;
+    margin-left: -17%;
+    
+    vertical-align: middle;
+}
+
+.add > h1 {
+    font-size: 72px;
+}
+
+.add:hover {
+    text-decoration: none;
+}
+
+.guide-image {
+    vertical-align: middle;
+    border-style: none;
+    width: 94%;
+    border: solid #DED858;
+}
+
+.guide-p {
+    display: none;
+}
+
+.guide-div {
+    margin: 3% 4%;
+    margin-bottom: 1%;
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+}
+
+.guide-h1 {
+    font-family: "Open Sans", sans-serif;
+    color: #72898A;
+    font-size: 26px;
+    text-decoration: underline;
+}
+
+.guide-form {
+    display: inline-block;
+    position: relative;
+    top: -31px;
+    left: 43px;
+}
+
+.guide-delete {
+    position: relative;
+    top: 35px;
+}
+
+#learn-header {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    color: #72898A;
+    margin-left: 5%;
+    padding-top: 2%;
+    display: inline-block;
+}
+
+#learn-p {
+    display: inline-block;
+    margin: 0 20%;
+    font-family: "Open Sans",sans-serif;
+    color: #737373;
+}
+
+.learn-ul {
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.list-inline-item {
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 5%;
+    font-size: 29px;
+    text-decoration: underline;
+    color: #5271FF;
+}
+
+#add-header {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    color: #72898A;
+    margin-left: 5%;
+    padding-top: 2%;
+    display: inline-block;
+}
+
+.go-back {
+    text-align: center;
+    line-height: 3;
+    position: relative;
+    left: 723px;
+    top: -81px;
+    
+}
+
+.go-back-link:hover {
+    
+    text-decoration: none;
+}
+
+.add-form {
+    margin: 2% 39%;
 }

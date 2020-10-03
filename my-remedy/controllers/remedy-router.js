@@ -1,8 +1,10 @@
 //Get Route from Express
 const { Router } = require("express");
 
+const mongoose = require("mongoose")
 
 const Remedy = require('../models/remedy.js');
+const Login = require("../models/auth/index.js");
 
 //create new router for our todos views
 const router = Router();
@@ -51,15 +53,31 @@ router.post("/guide", (req, res)=> {
 
 /////EDIT ROUTE 
 // router.get("/:index/edit", (req, res) => {
-//     res.render("pokedex/edit.jsx", {
-//         pokemon: pokemon[req.params.index],
-//         index: req.params.index
-//     } )
+//   Login.find({}, (error, user) => {
+//     res.render("edit.jsx", { login : user });
+//   });
 // })
 
+router.get('/:id/edit', (req, res)=>{
+  
+    res.render("edit.jsx", {
+        Login: Login[req.params.id],
+        id: req.params.id
+    } )
+})
 
 
-/// UPDATE
+
+////PUT/UPDATE ROUTE login info
+router.put("/:index", (req, res) => {
+
+  Login[req.params.index] = req.body
+  res.redirect(`/profile`) 
+});
+
+
+
+/// UPDATE guide info
 router.put("/guide/:id", (req, res) => {
     
   
@@ -73,18 +91,34 @@ router.put("/guide/:id", (req, res) => {
     );
   });
 
-
-
-
-
-
-//SHOW ROUTE - shows an individual post of the guide
-router.get("/guide/:id", (req, res) => {
-    res.render("show.jsx", {
-        remedy: remedy[req.params.index],
-        index: req.params.index
-    });
+////PROFILE ROUTE
+router.get("/profile", (req, res)=>{
+  Login.find({}, (error, user) => {
+    res.render("profile.jsx", { login : user });
+  });
+ 
 })
+
+
+
+
+
+//SHOW ROUTE - shows an individual post of the guide- 
+// router.get("/guide/:id", (req, res) => {
+//     res.render("show.jsx", {
+//         remedy: remedy[req.params.index],
+//         index: req.params.index
+//     });
+// })
+
+router.get("/guide/:id", (req, res) => {
+  Remedy.find(({_id:req.params.id}), (err, found) => {
+    res.render("show.jsx", { remedy: found });
+  })
+});
+
+
+
 
 
 // DElETE
@@ -94,6 +128,29 @@ router.delete("/guide/:id", (req, res) => {
     });
   });
 
+
+
+  router.post("/signup", async (req, res) => {
+    // ENCRYPT THE PASSWORD
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+    // SAVE NEW USER IN DB
+    const newUser = await Login.create(req.body);
+  
+      // SAVE NAME AND EMAIL IN DB
+  
+  // newUser = await Name.create(req.body);
+  // newUser = await Email.create(req.body);
+  
+    // Redirect to login page
+    res.redirect("/auth/login");
+  });
+
+
+  //LOGOUT
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
 
 //Export Router to be used in Server.js
 module.exports = router;
