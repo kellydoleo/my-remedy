@@ -13,7 +13,6 @@ html, body {
 #hero-image {
     width: 55%;
     margin-left: 20%;
-    margin-right: 49%;
     margin-bottom: 26px;
     margin-top: 17px;
 }
@@ -26,7 +25,7 @@ html, body {
 .pink-back {
     background-color: #FFC9B4;
     padding-bottom: 185px;
-    margin-right: -2%;
+    
 
 }
 
@@ -80,7 +79,6 @@ footer > ul > a > li {
 footer {
     background-color: #72898A;
     height: 260px;
-    margin-right: -2%;
 }
 
 .layout-nav-list  {
