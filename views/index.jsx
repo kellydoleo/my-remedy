@@ -33,8 +33,10 @@ class Index extends React.Component {
 
         <div  className="pink-back index">
           <div class="p-div" >
-          <p class="about-p" > <span class="my-remedy" >my remedy</span> is a platform where you can share, create and build your menstrual remedy. Our mission is to bring more awareness and education surrounding natural healthcare practices for black and brown women. </p>
+          {/* <p class="about-p" > <span class="my-remedy" >my remedy</span> is a platform where you can share, create and build your menstrual remedy. Our mission is to bring more awareness and education surrounding natural healthcare practices for black and brown women. </p> */}
+          <img style={{maxWidth: "69%", paddingLeft: "15%", paddingTop: "5%"}} src="https://i.ibb.co/jR0vFPz/Screen-Shot-2020-10-16-at-12-28-37-AM.png" />
           </div>
+
           <img id="green-flower-all" src="https://i.ibb.co/Jt7VkYJ/green-flower-all.png" />
         </div>
     

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
 
+html, body {
+    margin: 0;
+    padding: 0;
+  }  
+
+
 .logo {
     width: 35%;
 }
@@ -13,13 +19,14 @@
 }
 
 #green-flower-all {
-    max-width: 75%;
-    margin-left: 14%;
+    max-width: 68%;
+    margin-left: 15%;
 }
 
 .pink-back {
     background-color: #FFC9B4;
-    padding-bottom: 10px;
+    padding-bottom: 185px;
+    margin-right: -2%;
 
 }
 
@@ -72,7 +79,8 @@ footer > ul > a > li {
 
 footer {
     background-color: #72898A;
-    height: 208px;
+    height: 260px;
+    margin-right: -2%;
 }
 
 .layout-nav-list  {
@@ -103,7 +111,7 @@ footer {
     vertical-align: middle;
     position: relative;
     font-family: 'Open Sans', sans-serif;
-    padding: 0px 44px;
+    padding: 13px 44px;
     font-size: 22px;
     font-weight: 300;
     
@@ -387,4 +395,9 @@ label {
 
 .show-div {
     margin: 3% 38%;
+}
+
+
+@media only screen and (max-width: 600px) {
+
 }
