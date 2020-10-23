@@ -1,6 +1,8 @@
 //Get Route from Express
 const { Router } = require("express");
 
+const auth = require("./authmiddleware");
+
 // const mongoose = require("../db/dbconn.js")
 const mongojs = require('mongojs')
 const db = mongojs("mongodb+srv://sei:sei2020@sei.rqdkr.azure.mongodb.net/", ["my-remedy"]);
@@ -21,12 +23,23 @@ router.get('/', (req, res) => {
 
 
 ////GUIDE ROUTE, shows the posts of recipes/advice/tips
-router.get("/guide", (req, res)=>{
-    Remedy.find({}, (error, allRemedies) => {
-        res.render("guide.jsx", { remedy : allRemedies });
-      });
+// router.get("/guide", (req, res)=>{
+//     Remedy.find({}, (error, allRemedies) => {
+//         res.render("guide.jsx", { remedy : allRemedies });
+//       });
     
+// })
+
+router.get("/guide", auth, (req, res)=>{
+  Remedy.find({}, (error, allRemedies) => {
+      res.render("guide.jsx", { 
+        remedy : allRemedies,
+        user: req.session
+       });
+    });
+  
 })
+
 
  ///////NEW ROUTE 
 router.get("/new", (req, res) => {
@@ -54,7 +67,7 @@ router.post("/guide", (req, res)=> {
 // })
 
 
-/////EDIT ROUTE 
+/////EDIT ROUTE on Profile
 // router.get("/:index/edit", (req, res) => {
 //   Login.find({}, (error, user) => {
 //     res.render("edit.jsx", { login : user });
@@ -102,9 +115,12 @@ router.put("/guide/:id", (req, res) => {
  
 // })
 
-router.get("/auth/profile", (req, res)=>{
-  Login.find({}, (error, users) => {
-    res.render("profile.jsx", { login : users });
+router.get("/profile", auth, (req, res)=>{
+  Login.find({user: req.session.username}, (error, users) => {
+    res.render("profile.jsx", { 
+      login : users,
+      user: req.session
+     });
   });
  
 })
@@ -120,6 +136,9 @@ router.get("/guide/:id", (req, res) => {
     res.render("show.jsx", {remedy: data});
   });
 });
+
+
+/////EDIT GUIDE POSTS
 
 
 // router.get("/guide/:id", (req, res) => {

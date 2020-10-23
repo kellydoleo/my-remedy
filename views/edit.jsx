@@ -15,7 +15,7 @@ class Edit extends React.Component {
                    Email  <input type="text" placeholder="Email" name="email" /><br/>
                     <input type="submit"  value= "Update"></input>
                 </label>
-                <a href = {`/auth/profile`} ><button>Go Back</button></a>
+                <a href = {`/profile`} ><button>Go Back</button></a>
             </form>
             
             </Layout>
